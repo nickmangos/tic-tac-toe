@@ -1,8 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
+import { times } from 'ramda'
 
 import { Board, Square } from '..'
 
+
+const makeSquares = () =>
+  times(
+    idx => <Square key={idx} index={idx} player={idx % 2 === 0 ? 'x' : 'o'} />,
+    9
+  )
+  
 const StyledApp = styled.div`
   display: grid;
   font-family: 'Verdana', sans-serif;
@@ -18,15 +26,7 @@ export default function App () {
   return (
     <StyledApp>
       <Board>
-        <Square index={0} player='x' />
-        <Square index={1} player='o' />
-        <Square index={2} player='x' />
-        <Square index={3} player='o' />
-        <Square index={4} player='x' />
-        <Square index={5} player='o' />
-        <Square index={6} player='x' />
-        <Square index={7} player='o' />
-        <Square index={8} player='x' />
+        {makeSquares()}
       </Board>
     </StyledApp>
   )
