@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { isUndefined } from 'ramda-adjunct'
 
 const StyledSquare = styled.div`
   border-color: hsla(0, 0%, 0%, 0.2);
@@ -8,17 +9,18 @@ const StyledSquare = styled.div`
     ${({ index }) => (index < 6 ? '2px' : 0)} 0;
   color: ${({ player }) =>
     player === 'x' ? 'hsla(6, 59%, 50%, 1)' : 'hsla(145, 63%, 32%, 1)'};
+  cursor: ${({ onClick }) => (isUndefined(onClick) ? 'default' : 'pointer')}
   font-size: 16vh;
   font-weight: bold;
   line-height: 20vh;
   text-align: center;
   text-transform: uppercase;
 `
-StyledSquare.displayName = 'StyledSquare'
+StyledSquare.defaultName = 'StyledSquare'
 
-export default function Square ({ index, player }) {
+export default function Square ({ handleClick, index, player }) {
   return (
-    <StyledSquare index={index} player={player}>
+    <StyledSquare index={index} player={player} onClick={handleClick}>
       {player}
     </StyledSquare>
   )

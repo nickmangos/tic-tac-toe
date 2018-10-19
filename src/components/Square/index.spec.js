@@ -1,9 +1,19 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react'
 import { shallow } from 'enzyme'
 
 import Square from '.'
 
 describe('components:Square', () => {
+  it('renders the Square with the proper cursor if a click handler is provided', () => {
+    expect(
+      toJson(shallow(<Square handleClick={() => null} index={0} />).dive())
+    ).toMatchSnapshot()
+  })
+
   it('renders the Square with the proper styles for player O in the top left square', () => {
     expect(
       toJson(shallow(<Square player='o' index={0} />).dive())
