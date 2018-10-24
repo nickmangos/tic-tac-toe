@@ -3,16 +3,15 @@ import styled from 'styled-components'
 import { isUndefined } from 'ramda-adjunct'
 
 const StyledSquare = styled.div`
-  border-color: hsla(0, 0%, 0%, 0.2);
+  border-color: hsla(0, 0%, 0%, 0.1);
   border-style: solid;
   border-width: 0 ${({ index }) => (index % 3 === 2 ? 0 : '2px')}
     ${({ index }) => (index < 6 ? '2px' : 0)} 0;
-  color: ${({ player }) =>
-    player === 'x' ? 'hsla(6, 59%, 50%, 1)' : 'hsla(145, 63%, 32%, 1)'};
+  color: ${({ player }) => (player === 'x' ? '#CCCCCC' : '#AAAAAA')};
   cursor: ${({ onClick }) => (isUndefined(onClick) ? 'default' : 'pointer')}
   font-size: 16vh;
-  font-weight: bold;
-  line-height: 20vh;
+  font-weight: regular;
+  line-height: 23vh;
   text-align: center;
   text-transform: uppercase;
 `
